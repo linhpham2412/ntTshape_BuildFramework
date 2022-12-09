@@ -1,8 +1,9 @@
-package nt.tshape.PageModal;
+package nt.tshape.automation.selenium.PageModal;
 
-import nt.tshape.Constant;
-import nt.tshape.Customer_Information;
-import nt.tshape.TestContext;
+import nt.tshape.automation.selenium.ActionManager;
+import nt.tshape.automation.selenium.Constant;
+import nt.tshape.automation.selenium.Customer_Information;
+import nt.tshape.automation.selenium.TestContext;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -14,7 +15,7 @@ import org.testng.Assert;
 
 import java.util.List;
 
-public class AutomationPracticeIndexPage {
+public class AutomationPracticeIndexPage extends ActionManager {
     private final WebDriverWait wait;
     private final Customer_Information customerInformation;
     private final TestContext testContext;
@@ -39,6 +40,7 @@ public class AutomationPracticeIndexPage {
 
     //constructor
     public AutomationPracticeIndexPage(WebDriver driver, WebDriverWait wait, TestContext testContext) {
+        super(driver, wait, testContext);
         this.driver = driver;
         this.wait = wait;
         this.testContext = testContext;

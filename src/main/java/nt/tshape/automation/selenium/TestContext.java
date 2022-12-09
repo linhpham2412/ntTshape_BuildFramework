@@ -1,4 +1,4 @@
-package nt.tshape;
+package nt.tshape.automation.selenium;
 
 
 import java.util.HashMap;
@@ -12,8 +12,9 @@ public class TestContext {
         return customerInformation;
     }
 
-    public void setCustomerInformation(Customer_Information customerInformation) {
+    public Customer_Information setCustomerInformation(Customer_Information customerInformation) {
         this.customerInformation = customerInformation;
+        return customerInformation;
     }
 
     public void setAttribute(String key, String value) {

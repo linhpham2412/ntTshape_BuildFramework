@@ -1,14 +1,29 @@
-package nt.tshape.TestCase;
+package nt.tshape.automation.selenium.TestCase;
 
-import nt.tshape.BaseClass;
-import nt.tshape.Constant;
-import nt.tshape.PageModal.AutomationPracticeAccountPage;
-import nt.tshape.PageModal.AutomationPracticeIndexPage;
+import nt.tshape.automation.selenium.Constant;
+import nt.tshape.automation.selenium.Customer_Information;
+import nt.tshape.automation.selenium.PageModal.AutomationPracticeAccountPage;
+import nt.tshape.automation.selenium.PageModal.AutomationPracticeIndexPage;
+import nt.tshape.automation.selenium.TestContext;
+import nt.tshape.automation.setup.WebDriverTestNGSetup;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Test;
 
-import static nt.tshape.Utils.*;
+import static nt.tshape.automation.selenium.Utils.*;
 
-public class Exercise1RegisterNewAccountTestCases extends BaseClass {
+public class Exercise1RegisterNewAccountTestCases extends WebDriverTestNGSetup {
+    WebDriverWait wait;
+    TestContext testContext;
+    Customer_Information customerInformation;
+
+    public Exercise1RegisterNewAccountTestCases(WebDriver driver, WebDriverWait wait, TestContext testContext) {
+        this.driver = driver;
+        this.wait = wait;
+        this.testContext = testContext;
+        this.customerInformation = testContext.getCustomerInformation();
+    }
+
     @Test
     public void RegisterNewAccount() {
         AutomationPracticeIndexPage automationPracticeIndexPage = new AutomationPracticeIndexPage(driver, wait, testContext);

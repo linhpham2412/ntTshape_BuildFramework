@@ -5,7 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0209ad07-ab16-4892-92f8-538836da1e27" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/nt/tshape/automation/selenium/ActionManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/nt/tshape/automation/setup/WebDriverTestNGSetup.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nt/tshape/automation/selenium/ActionManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nt/tshape/automation/selenium/ActionManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nt/tshape/automation/selenium/WebDriverCreator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nt/tshape/automation/selenium/WebDriverCreator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/nt/tshape/BaseClass.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/nt/tshape/Constant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nt/tshape/automation/selenium/Constant.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/nt/tshape/Customer_Information.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nt/tshape/automation/selenium/Customer_Information.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/nt/tshape/PageModal/AutomationPracticeAccountPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/nt/tshape/automation/selenium/PageModal/AutomationPracticeAccountPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/nt/tshape/PageModal/AutomationPracticeIndexPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/nt/tshape/automation/selenium/PageModal/AutomationPracticeIndexPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/nt/tshape/TestCase/Exercise1RegisterNewAccountTestCases.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/nt/tshape/automation/selenium/TestCase/Exercise1RegisterNewAccountTestCases.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/nt/tshape/TestCase/Exercise2SearchProductTestCases.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/nt/tshape/automation/selenium/TestCase/Exercise2SearchProductTestCases.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/nt/tshape/TestContext.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nt/tshape/automation/selenium/TestContext.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/nt/tshape/Utils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nt/tshape/automation/selenium/Utils.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,6 +39,22 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="recentNewPullRequestHead">
+      <RepoCoordinatesHolder>
+        <option name="owner" value="linhpham2412" />
+        <option name="repository" value="ntTshape_BuildFramework" />
+      </RepoCoordinatesHolder>
+    </option>
+  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -40,10 +68,19 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/test/java/nt/tshape/automation/selenium" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Git-source-folder\ntTshape_BuildFramework\src\main\java\nt\tshape\automation\selenium" />
       <recent name="C:\Users\linhpham\Documents\Git_Repository\tshape_linhpham_1326_day4\src\test\java\nt\tshape" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="nt.tshape" />
+      <recent name="nt.tshape.automation.selenium" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="nt.tshape.automation.selenium" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -55,6 +92,14 @@
       <option name="presentableId" value="Default" />
       <updated>1670407585914</updated>
     </task>
+    <task id="LOCAL-00001" summary="create ActionManager">
+      <created>1670518320387</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1670518320387</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -67,5 +112,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="create ActionManager" />
+    <option name="LAST_COMMIT_MESSAGE" value="create ActionManager" />
   </component>
 </project>
