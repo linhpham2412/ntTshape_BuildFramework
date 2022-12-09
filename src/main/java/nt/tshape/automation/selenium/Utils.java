@@ -1,4 +1,4 @@
-package nt.tshape;
+package nt.tshape.automation.selenium;
 
 import java.util.Random;
 

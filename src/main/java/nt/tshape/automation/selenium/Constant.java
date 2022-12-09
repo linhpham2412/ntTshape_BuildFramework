@@ -1,4 +1,4 @@
-package nt.tshape;
+package nt.tshape.automation.selenium;
 
 public class Constant {
     public static final long SHORT_TIME = 3;

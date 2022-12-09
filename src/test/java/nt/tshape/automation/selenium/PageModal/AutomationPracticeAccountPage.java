@@ -1,8 +1,8 @@
-package nt.tshape.PageModal;
+package nt.tshape.automation.selenium.PageModal;
 
-import nt.tshape.BaseClass;
-import nt.tshape.Customer_Information;
-import nt.tshape.TestContext;
+import nt.tshape.automation.selenium.ActionManager;
+import nt.tshape.automation.selenium.Customer_Information;
+import nt.tshape.automation.selenium.TestContext;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -10,8 +10,9 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
-public class AutomationPracticeAccountPage extends BaseClass {
+public class AutomationPracticeAccountPage extends ActionManager {
     private final WebDriverWait wait;
+    private final TestContext testContext;
     private final Customer_Information customerInformation;
     //locator
     private final String linkButtonXPathLocatorByName = "//span[normalize-space() = '%s']//parent::a";
@@ -23,10 +24,13 @@ public class AutomationPracticeAccountPage extends BaseClass {
     public WebDriver driver;
 
     public AutomationPracticeAccountPage(WebDriver driver, WebDriverWait wait, TestContext testContext) {
+        super(driver, wait, testContext);
         this.driver = driver;
         this.wait = wait;
+        this.testContext = testContext;
         this.customerInformation = testContext.getCustomerInformation();
     }
+
 
     public AutomationPracticeAccountPage clickLinkButtonByName(String buttonName) {
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath(String.format(linkButtonXPathLocatorByName, buttonName))));

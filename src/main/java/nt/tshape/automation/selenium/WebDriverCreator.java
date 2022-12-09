@@ -12,7 +12,6 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.HashMap;
-import java.util.Objects;
 
 public class WebDriverCreator {
 
@@ -33,15 +32,9 @@ public class WebDriverCreator {
             driver = new ChromeDriver(options);
         } else if (browser.equalsIgnoreCase("firefox")) {
             System.setProperty("webdriver.gecko.driver", firefoxDriverLocation);
-            FirefoxOptions options = new FirefoxOptions()
-                    .setBinary("C:\\Program Files\\Mozilla Firefox\\firefox.exe")
-                    .setAcceptInsecureCerts(true);
+            FirefoxOptions options = new FirefoxOptions().setBinary("C:\\Program Files\\Mozilla Firefox\\firefox.exe").setAcceptInsecureCerts(true);
             driver = new FirefoxDriver(options);
         }
-        Objects.requireNonNull(driver)
-                .manage()
-                .window()
-                .maximize();
         return driver;
     }
 
@@ -75,10 +68,6 @@ public class WebDriverCreator {
             System.setProperty("webdriver.gecko.driver", firefoxDriverLocation);
             driver = new RemoteWebDriver(options);
         }
-        Objects.requireNonNull(driver)
-                .manage()
-                .window()
-                .maximize();
         return driver;
     }
 
@@ -95,10 +84,6 @@ public class WebDriverCreator {
         browserStackOptions.put("seleniumVersion", "3.141.59");
         capabilities.setCapability("bstack:options", browserStackOptions);
         driver = new RemoteWebDriver(new URL("https://" + username + ":" + accessKey + "@hub.browserstack.com/wd/hub"), capabilities);
-        driver
-                .manage()
-                .window()
-                .maximize();
         return driver;
     }
 }
