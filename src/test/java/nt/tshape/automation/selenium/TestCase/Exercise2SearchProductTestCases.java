@@ -14,8 +14,7 @@ public class Exercise2SearchProductTestCases extends WebDriverTestNGSetup {
     TestContext testContext;
     Customer_Information customerInformation;
 
-    public Exercise2SearchProductTestCases(WebDriver driver, WebDriverWait wait, TestContext testContext) {
-        this.driver = driver;
+    public Exercise2SearchProductTestCases(WebDriverWait wait, TestContext testContext) {
         this.wait = wait;
         this.testContext = testContext;
         this.customerInformation = testContext.getCustomerInformation();
@@ -23,7 +22,7 @@ public class Exercise2SearchProductTestCases extends WebDriverTestNGSetup {
 
     @Test
     public void CollectProductNameAndSearch() {
-        AutomationPracticeIndexPage automationPracticeIndexPage = new AutomationPracticeIndexPage(driver, wait, testContext);
+        AutomationPracticeIndexPage automationPracticeIndexPage = new AutomationPracticeIndexPage(getDriver(), wait, testContext);
 
         automationPracticeIndexPage
                 .goToPageByURL("http://automationpractice.com/index.php")

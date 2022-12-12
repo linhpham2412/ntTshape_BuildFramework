@@ -17,8 +17,7 @@ public class Exercise1RegisterNewAccountTestCases extends WebDriverTestNGSetup {
     TestContext testContext;
     Customer_Information customerInformation;
 
-    public Exercise1RegisterNewAccountTestCases(WebDriver driver, WebDriverWait wait, TestContext testContext) {
-        this.driver = driver;
+    public Exercise1RegisterNewAccountTestCases(WebDriverWait wait, TestContext testContext) {
         this.wait = wait;
         this.testContext = testContext;
         this.customerInformation = testContext.getCustomerInformation();
@@ -26,8 +25,8 @@ public class Exercise1RegisterNewAccountTestCases extends WebDriverTestNGSetup {
 
     @Test
     public void RegisterNewAccount() {
-        AutomationPracticeIndexPage automationPracticeIndexPage = new AutomationPracticeIndexPage(driver, wait, testContext);
-        AutomationPracticeAccountPage automationPracticeAccountPage = new AutomationPracticeAccountPage(driver, wait, testContext);
+        AutomationPracticeIndexPage automationPracticeIndexPage = new AutomationPracticeIndexPage(getDriver(), wait, testContext);
+        AutomationPracticeAccountPage automationPracticeAccountPage = new AutomationPracticeAccountPage(getDriver(), wait, testContext);
 
         automationPracticeIndexPage
                 .goToPageByURL("http://automationpractice.com/index.php")

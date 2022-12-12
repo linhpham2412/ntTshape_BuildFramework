@@ -15,12 +15,12 @@ public class AutomationPracticeAccountPage extends ActionManager {
     private final TestContext testContext;
     private final Customer_Information customerInformation;
     //locator
-    private final String linkButtonXPathLocatorByName = "//span[normalize-space() = '%s']//parent::a";
-    private final String titleCheckBoxLocatorById = "//input[@id='%s']";
-    private final String personalInfoTextFieldLocatorByName = "//label[normalize-space(text())='%s']//parent::div//child::input";
-    private final String dobDropDownFieldLocatorByXPathIdName = "//div[@id='%s']";
-    private final String addressAliasLocatorByValue = "//h3[contains (@class,'page-subheading') and normalize-space(text())='%s']";
-    private final String addressInfoLocatorByFieldName = "//span[normalize-space() = '%s']";
+    private final String linkButtonXPathLocatorByName = "xpath=//span[normalize-space() = '%s']//parent::a";
+    private final String titleCheckBoxLocatorById = "xpath=//input[@id='%s']";
+    private final String personalInfoTextFieldLocatorByName = "xpath=//label[normalize-space(text())='%s']//parent::div//child::input";
+    private final String dobDropDownFieldLocatorByXPathIdName = "xpath=//div[@id='%s']";
+    private final String addressAliasLocatorByValue = "xpath=//h3[contains (@class,'page-subheading') and normalize-space(text())='%s']";
+    private final String addressInfoLocatorByFieldName = "xpath=//span[normalize-space() = '%s']";
     public WebDriver driver;
 
     public AutomationPracticeAccountPage(WebDriver driver, WebDriverWait wait, TestContext testContext) {
@@ -33,15 +33,15 @@ public class AutomationPracticeAccountPage extends ActionManager {
 
 
     public AutomationPracticeAccountPage clickLinkButtonByName(String buttonName) {
-        wait.until(ExpectedConditions.elementToBeClickable(By.xpath(String.format(linkButtonXPathLocatorByName, buttonName))));
-        driver.findElement(By.xpath(String.format(linkButtonXPathLocatorByName, buttonName)))
+        wait.until(ExpectedConditions.elementToBeClickable(findElement(String.format(linkButtonXPathLocatorByName, buttonName))));
+        findElement(String.format(linkButtonXPathLocatorByName, buttonName))
                 .click();
         return this;
     }
 
     public AutomationPracticeAccountPage verifyPersonalInfoDataByFieldName(String fieldName) {
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(String.format(personalInfoTextFieldLocatorByName, fieldName))));
-        WebElement fieldToBeVerify = driver.findElement(By.xpath(String.format(personalInfoTextFieldLocatorByName, fieldName)));
+        wait.until(ExpectedConditions.visibilityOf(findElement(String.format(personalInfoTextFieldLocatorByName, fieldName))));
+        WebElement fieldToBeVerify = findElement(String.format(personalInfoTextFieldLocatorByName, fieldName));
         String actualValue = fieldToBeVerify.getAttribute("value");
         String expectedValue = customerInformation.getDataByFieldName(fieldName);
         Assert.assertEquals(actualValue, expectedValue, "Field: " + fieldName + " does not display correct value");
@@ -56,14 +56,14 @@ public class AutomationPracticeAccountPage extends ActionManager {
     }
 
     public AutomationPracticeAccountPage verifyTitleCheckBoxDisplayCorrectlyById(String titleFieldId, Boolean expectedResult) {
-        WebElement titleCheckBox = driver.findElement(By.xpath(String.format(titleCheckBoxLocatorById, titleFieldId)));
+        WebElement titleCheckBox = findElement(String.format(titleCheckBoxLocatorById, titleFieldId));
         Boolean actualValue = titleCheckBox.isSelected();
         Assert.assertEquals(actualValue, expectedResult, "Field: " + titleFieldId + " does not have same value with saved data");
         return this;
     }
 
     public AutomationPracticeAccountPage verifyDropDownFieldByIdDisplayCorrectValue(String fieldName) {
-        WebElement dropDownFieldToBeVerify = driver.findElement(By.xpath(String.format(dobDropDownFieldLocatorByXPathIdName, fieldName)));
+        WebElement dropDownFieldToBeVerify = findElement(String.format(dobDropDownFieldLocatorByXPathIdName, fieldName));
         String actualValue = dropDownFieldToBeVerify.getText().substring(0, dropDownFieldToBeVerify.getText().indexOf("-")).trim();
         String expectedValue = customerInformation.getDataByFieldName(fieldName);
         Assert.assertEquals(actualValue, expectedValue, "Field: " + fieldName + " does not have date same with saved one");
@@ -71,8 +71,8 @@ public class AutomationPracticeAccountPage extends ActionManager {
     }
 
     public AutomationPracticeAccountPage verifyAddressAliasHeaderDisplayCorrectValue(String expectedValue) {
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(String.format(addressAliasLocatorByValue, expectedValue))));
-        WebElement addressAliasHeader = driver.findElement(By.xpath(String.format(addressAliasLocatorByValue, expectedValue)));
+        wait.until(ExpectedConditions.visibilityOf(findElement(String.format(addressAliasLocatorByValue, expectedValue))));
+        WebElement addressAliasHeader = findElement(String.format(addressAliasLocatorByValue, expectedValue));
         String actualValue = addressAliasHeader.getText();
         Assert.assertEquals(actualValue.compareToIgnoreCase(expectedValue), 0, "Address " + expectedValue + " does not exist in address panel");
         return this;
@@ -81,7 +81,7 @@ public class AutomationPracticeAccountPage extends ActionManager {
     public AutomationPracticeAccountPage verifyExistingOfAddressInfoByFieldName(String fieldName) {
         String expectedValue = customerInformation.getDataByFieldName(fieldName);
         expectedValue = (fieldName.equals("City")) ? expectedValue + "," : expectedValue;
-        WebElement addressInfoField = driver.findElement(By.xpath(String.format(addressInfoLocatorByFieldName, expectedValue)));
+        WebElement addressInfoField = findElement(String.format(addressInfoLocatorByFieldName, expectedValue));
         Assert.assertTrue(addressInfoField.isDisplayed(), "Field :" + fieldName + " not displayed on the address panel");
         return this;
     }
