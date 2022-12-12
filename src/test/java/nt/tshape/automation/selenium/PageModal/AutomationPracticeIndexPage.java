@@ -20,21 +20,21 @@ public class AutomationPracticeIndexPage extends ActionManager {
     private final Customer_Information customerInformation;
     private final TestContext testContext;
     //locator
-    private final String linkButtonXPathLocatorByName = "//a[normalize-space(text()) = '%s']";
+    private final String linkButtonXPathLocatorByName = "xpath=//a[normalize-space(text()) = '%s']";
     private final String postFixSelect = "//select";
-    private final String buttonXPathLocatorByName = "//span[normalize-space() = '%s']//parent::button";
-    private final String dobDropDownFieldLocatorByXPathIdName = "//div[@id='%s']";
-    private final String linkMenuListXPathLocatorByName = "//a[contains (@class,'sf-with-ul') and normalize-space(text()) = '%s']";
-    private final String personalInfoCheckBoxLocatorByText = "//label[normalize-space()='%s']//preceding-sibling::div";
-    private final By emailCreateTextBox = By.id("email_create");
-    private final String titleCheckBoxLocatorById = "//input[@id='%s']";
-    private final String personalInfoTextFieldLocatorByName = "//label[normalize-space(text())='%s']//parent::div//child::input";
-    private final String yourAddressTextFieldLocatorByName = "//label[normalize-space(text())='%s']//parent::p//child::input";
-    private final String additionalInformationTextareaXPathLocator = "//textarea[@id='other']";
+    private final String buttonXPathLocatorByName = "xpath=//span[normalize-space() = '%s']//parent::button";
+    private final String dobDropDownFieldLocatorByXPathIdName = "xpath=//div[@id='%s']";
+    private final String linkMenuListXPathLocatorByName = "xpath=//a[contains (@class,'sf-with-ul') and normalize-space(text()) = '%s']";
+    private final String personalInfoCheckBoxLocatorByText = "xpath=//label[normalize-space()='%s']//preceding-sibling::div";
+    private final String emailCreateTextBox = "id=email_create";
+    private final String titleCheckBoxLocatorById = "xpath=//input[@id='%s']";
+    private final String personalInfoTextFieldLocatorByName = "xpath=//label[normalize-space(text())='%s']//parent::div//child::input";
+    private final String yourAddressTextFieldLocatorByName = "xpath=//label[normalize-space(text())='%s']//parent::p//child::input";
+    private final String additionalInformationTextareaXPathLocator = "xpath=//textarea[@id='other']";
     private final String linkSubMenuToMergeWithMenuXPathLocatorByName = "//following::ul[contains(@class,'submenu-container')]//a[normalize-space(text()) = '%s']";
-    private final String productXPathLocatorByIndex = "//ul[contains (@class,'product_list')]//li[contains (@class,'ajax_block_product')][%s]";
+    private final String productXPathLocatorByIndex = "xpath=//ul[contains (@class,'product_list')]//li[contains (@class,'ajax_block_product')][%s]";
     private final String productDetailXPathLocatorByClassName = "//div[@class='right-block']//*[@class='%s']";
-    private final By searchTextField = By.id("search_query_top");
+    private final String searchTextField = "id=search_query_top";
     public WebDriver driver;
 
 
@@ -53,29 +53,29 @@ public class AutomationPracticeIndexPage extends ActionManager {
     }
 
     public AutomationPracticeIndexPage clickLinkButtonByName(String linkName) {
-        wait.until(ExpectedConditions.elementToBeClickable(By.xpath(String.format(linkButtonXPathLocatorByName, linkName))));
-        WebElement linkToBeClick = driver.findElement(By.xpath(String.format(linkButtonXPathLocatorByName, linkName)));
+        wait.until(ExpectedConditions.elementToBeClickable(findElement(String.format(linkButtonXPathLocatorByName, linkName))));
+        WebElement linkToBeClick = findElement(String.format(linkButtonXPathLocatorByName, linkName));
         linkToBeClick.click();
         return this;
     }
 
     public AutomationPracticeIndexPage clickButtonByName(String buttonName) {
-        wait.until(ExpectedConditions.elementToBeClickable(By.xpath(String.format(buttonXPathLocatorByName, buttonName))));
-        WebElement buttonToBeClick = driver.findElement(By.xpath(String.format(buttonXPathLocatorByName, buttonName)));
+        wait.until(ExpectedConditions.elementToBeClickable(findElement(String.format(buttonXPathLocatorByName, buttonName))));
+        WebElement buttonToBeClick = findElement(String.format(buttonXPathLocatorByName, buttonName));
         buttonToBeClick.click();
         return this;
     }
 
     public AutomationPracticeIndexPage inputToEmailAddressWithEmail(String emailAddress) {
-        wait.until(ExpectedConditions.visibilityOfElementLocated(emailCreateTextBox));
-        driver.findElement(emailCreateTextBox).sendKeys(emailAddress);
+        wait.until(ExpectedConditions.visibilityOf(findElement(emailCreateTextBox)));
+        findElement(emailCreateTextBox).sendKeys(emailAddress);
         customerInformation.saveDataByFieldName("Email", emailAddress);
         return this;
     }
 
     public AutomationPracticeIndexPage selectDropDownFieldByIdWithValue(String fieldId, String fieldValue) {
-        wait.until(ExpectedConditions.elementToBeClickable(By.xpath(String.format(dobDropDownFieldLocatorByXPathIdName, fieldId))));
-        Select dropDownField = new Select(driver.findElement(By.xpath(String.format(dobDropDownFieldLocatorByXPathIdName, fieldId) + postFixSelect)));
+        wait.until(ExpectedConditions.elementToBeClickable(findElement(String.format(dobDropDownFieldLocatorByXPathIdName, fieldId))));
+        Select dropDownField = new Select(findElement(String.format(dobDropDownFieldLocatorByXPathIdName, fieldId) + postFixSelect));
         dropDownField.selectByValue(fieldValue);
         customerInformation.saveDataByFieldName(fieldId, fieldValue);
         if (fieldId.equals(Constant.ADDRESS_STATE_ID)) {
@@ -91,29 +91,29 @@ public class AutomationPracticeIndexPage extends ActionManager {
 
     public AutomationPracticeIndexPage selectPersonalTitleAs(Boolean isMrTitle) {
         String titleId = (isMrTitle) ? Constant.TITLE_MR_FIELD_ID : Constant.TITLE_MRS_FIELD_ID;
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(String.format(titleCheckBoxLocatorById, titleId))));
-        WebElement titleCheckBox = driver.findElement(By.xpath(String.format(titleCheckBoxLocatorById, titleId)));
+        wait.until(ExpectedConditions.visibilityOf(findElement(String.format(titleCheckBoxLocatorById, titleId))));
+        WebElement titleCheckBox = findElement(String.format(titleCheckBoxLocatorById, titleId));
         titleCheckBox.click();
         customerInformation.saveCustomerTitleByBoolean(isMrTitle);
         return this;
     }
 
     public AutomationPracticeIndexPage inputPersonalInformationFieldNameWithValue(String fieldName, String fieldValue) {
-        driver.findElement(By.xpath(String.format(personalInfoTextFieldLocatorByName, fieldName)))
+        findElement(String.format(personalInfoTextFieldLocatorByName, fieldName))
                 .sendKeys(fieldValue);
         customerInformation.saveDataByFieldName(fieldName, fieldValue);
         return this;
     }
 
     public AutomationPracticeIndexPage checkOnPersonalInfoCheckBoxByText(String fieldText, Boolean isCheck) {
-        if (isCheck) driver.findElement(By.xpath(String.format(personalInfoCheckBoxLocatorByText, fieldText)))
+        if (isCheck) findElement(String.format(personalInfoCheckBoxLocatorByText, fieldText))
                 .click();
         customerInformation.saveCheckBoxDataByFieldNameWithBooleanValue(fieldText, isCheck);
         return this;
     }
 
     public AutomationPracticeIndexPage inputYourAddressTextFieldNameWithValue(String fieldName, String fieldValue) {
-        WebElement textField = driver.findElement(By.xpath(String.format(yourAddressTextFieldLocatorByName, fieldName)));
+        WebElement textField = findElement(String.format(yourAddressTextFieldLocatorByName, fieldName));
         textField.clear();
         textField.sendKeys(fieldValue);
         customerInformation.saveDataByFieldName(fieldName, fieldValue);
@@ -121,18 +121,18 @@ public class AutomationPracticeIndexPage extends ActionManager {
     }
 
     public AutomationPracticeIndexPage inputAdditionalTextareaWithText(String fieldText) {
-        driver.findElement(By.xpath(additionalInformationTextareaXPathLocator))
+        findElement(additionalInformationTextareaXPathLocator)
                 .sendKeys(fieldText);
         customerInformation.saveAdditionalInformationTextAreaByValue(fieldText);
         return this;
     }
 
     public AutomationPracticeIndexPage moveToMenuWithNameAndClickOnButtonByFieldName(String menuName, String subMenuFieldName) {
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(String.format(linkMenuListXPathLocatorByName, menuName))));
-        WebElement mainMenuElement = driver.findElement(By.xpath(String.format(linkMenuListXPathLocatorByName, menuName)));
+        wait.until(ExpectedConditions.visibilityOf(findElement(String.format(linkMenuListXPathLocatorByName, menuName))));
+        WebElement mainMenuElement = findElement(String.format(linkMenuListXPathLocatorByName, menuName));
         Actions actions = new Actions(driver);
         actions.moveToElement(mainMenuElement);
-        WebElement subMenuElement = driver.findElement(By.xpath(String.format(linkMenuListXPathLocatorByName, menuName) + String.format(linkSubMenuToMergeWithMenuXPathLocatorByName, subMenuFieldName)));
+        WebElement subMenuElement = findElement(String.format(linkMenuListXPathLocatorByName, menuName) + String.format(linkSubMenuToMergeWithMenuXPathLocatorByName, subMenuFieldName));
         actions.moveToElement(subMenuElement);
         actions.click().build().perform();
         return this;
@@ -144,15 +144,15 @@ public class AutomationPracticeIndexPage extends ActionManager {
     }
 
     public AutomationPracticeIndexPage getDetailDataOfFocusedProductByName(String className) {
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(testContext.getAttributeByName("focusedProductXPath") + String.format(productDetailXPathLocatorByClassName, className))));
-        WebElement productDetailElement = driver.findElement(By.xpath(testContext.getAttributeByName("focusedProductXPath") + String.format(productDetailXPathLocatorByClassName, className)));
+        wait.until(ExpectedConditions.visibilityOf(findElement(testContext.getAttributeByName("focusedProductXPath") + String.format(productDetailXPathLocatorByClassName, className))));
+        WebElement productDetailElement = findElement(testContext.getAttributeByName("focusedProductXPath") + String.format(productDetailXPathLocatorByClassName, className));
         String valueToBeExtracted = productDetailElement.getText();
         testContext.setAttribute(className, valueToBeExtracted);
         return this;
     }
 
     public AutomationPracticeIndexPage inputSearchTextIntoSearchField(String searchText) {
-        driver.findElement(searchTextField).sendKeys(searchText);
+        findElement(searchTextField).sendKeys(searchText);
         return this;
     }
 

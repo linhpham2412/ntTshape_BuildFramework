@@ -12,10 +12,13 @@ import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 
 public class WebDriverTestNGSetup {
-    public WebDriver driver;
     public WebDriverWait wait;
     public TestContext testContext;
     public Customer_Information customerInformation;
+
+    public WebDriver getDriver(){
+        return WebDriverManager.getDriver();
+    }
 
     @AfterClass
     public static void afterClass() {
@@ -25,15 +28,11 @@ public class WebDriverTestNGSetup {
     @Parameters({"browser"})
     @BeforeClass
     public void beforeClassSetUp(@Optional("chrome") String browser) {
-        wait = new WebDriverWait(driver, Constant.SHORT_TIME);
+        wait = new WebDriverWait(getDriver(), Constant.SHORT_TIME);
         testContext = new TestContext();
         customerInformation = new Customer_Information();
         customerInformation = testContext.getCustomerInformation();
         WebDriverManager.iniDriver(browser);
-        driver = WebDriverManager.getDriver();
-        driver
-                .manage()
-                .window()
-                .maximize();
+        WebDriverManager.getDriver();
     }
 }

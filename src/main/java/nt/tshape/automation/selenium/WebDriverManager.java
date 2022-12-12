@@ -3,7 +3,7 @@ package nt.tshape.automation.selenium;
 import org.openqa.selenium.WebDriver;
 
 public class WebDriverManager {
-    private static ThreadLocal<WebDriver> driverThread;
+    private static ThreadLocal<WebDriver> driverThread = new ThreadLocal<WebDriver>();
 
     public static void iniDriver(String browser) {
         if (getDriver() != null) {
