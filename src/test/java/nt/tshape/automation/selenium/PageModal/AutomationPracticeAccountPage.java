@@ -11,8 +11,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 public class AutomationPracticeAccountPage extends ActionManager {
-    private final WebDriverWait wait;
-    private final TestContext testContext;
     private final Customer_Information customerInformation;
     //locator
     private final String linkButtonXPathLocatorByName = "xpath=//span[normalize-space() = '%s']//parent::a";
@@ -25,22 +23,17 @@ public class AutomationPracticeAccountPage extends ActionManager {
 
     public AutomationPracticeAccountPage(WebDriver driver, WebDriverWait wait, TestContext testContext) {
         super(driver, wait, testContext);
-        this.driver = driver;
-        this.wait = wait;
-        this.testContext = testContext;
         this.customerInformation = testContext.getCustomerInformation();
     }
 
-
     public AutomationPracticeAccountPage clickLinkButtonByName(String buttonName) {
-        wait.until(ExpectedConditions.elementToBeClickable(findElement(String.format(linkButtonXPathLocatorByName, buttonName))));
-        findElement(String.format(linkButtonXPathLocatorByName, buttonName))
-                .click();
+        waitForElementClickable(String.format(linkButtonXPathLocatorByName, buttonName));
+        click(String.format(linkButtonXPathLocatorByName, buttonName));
         return this;
     }
 
     public AutomationPracticeAccountPage verifyPersonalInfoDataByFieldName(String fieldName) {
-        wait.until(ExpectedConditions.visibilityOf(findElement(String.format(personalInfoTextFieldLocatorByName, fieldName))));
+        waitForElementVisible(String.format(personalInfoTextFieldLocatorByName, fieldName));
         WebElement fieldToBeVerify = findElement(String.format(personalInfoTextFieldLocatorByName, fieldName));
         String actualValue = fieldToBeVerify.getAttribute("value");
         String expectedValue = customerInformation.getDataByFieldName(fieldName);
@@ -50,7 +43,7 @@ public class AutomationPracticeAccountPage extends ActionManager {
 
     public AutomationPracticeAccountPage verifyAccountLinkButtonWithAccountNameAvailable() {
         String accountName = customerInformation.getFirstName() + " " + customerInformation.getLastName();
-        WebElement headerLinkWithAccountName = driver.findElement(By.xpath(String.format(linkButtonXPathLocatorByName, accountName)));
+        WebElement headerLinkWithAccountName = findElement(String.format(linkButtonXPathLocatorByName, accountName));
         Assert.assertTrue(headerLinkWithAccountName.isDisplayed(), "Link button with account name on menu does not displace as expected");
         return this;
     }
@@ -71,9 +64,8 @@ public class AutomationPracticeAccountPage extends ActionManager {
     }
 
     public AutomationPracticeAccountPage verifyAddressAliasHeaderDisplayCorrectValue(String expectedValue) {
-        wait.until(ExpectedConditions.visibilityOf(findElement(String.format(addressAliasLocatorByValue, expectedValue))));
-        WebElement addressAliasHeader = findElement(String.format(addressAliasLocatorByValue, expectedValue));
-        String actualValue = addressAliasHeader.getText();
+        waitForElementVisible(String.format(addressAliasLocatorByValue, expectedValue));
+        String actualValue = getText(String.format(addressAliasLocatorByValue, expectedValue));
         Assert.assertEquals(actualValue.compareToIgnoreCase(expectedValue), 0, "Address " + expectedValue + " does not exist in address panel");
         return this;
     }

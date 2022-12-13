@@ -4,17 +4,16 @@ import nt.tshape.automation.selenium.Constant;
 import nt.tshape.automation.selenium.Customer_Information;
 import nt.tshape.automation.selenium.PageModal.AutomationPracticeIndexPage;
 import nt.tshape.automation.selenium.TestContext;
-import nt.tshape.automation.setup.WebDriverTestNGSetup;
-import org.openqa.selenium.WebDriver;
+import nt.tshape.automation.setup.WebDriverTestNGSetupBase;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Test;
 
-public class Exercise2SearchProductTestCases extends WebDriverTestNGSetup {
+public class ExerciseBase2SearchProductTestCases extends WebDriverTestNGSetupBase {
     WebDriverWait wait;
     TestContext testContext;
     Customer_Information customerInformation;
 
-    public Exercise2SearchProductTestCases(WebDriverWait wait, TestContext testContext) {
+    public ExerciseBase2SearchProductTestCases(WebDriverWait wait, TestContext testContext) {
         this.wait = wait;
         this.testContext = testContext;
         this.customerInformation = testContext.getCustomerInformation();

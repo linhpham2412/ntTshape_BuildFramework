@@ -1,6 +1,9 @@
 package nt.tshape.automation.selenium;
 
 import org.openqa.selenium.*;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.List;
@@ -73,6 +76,20 @@ public class ActionManager {
         System.out.println(printOutInfo);
     }
 
+    public void clearText(String elementToClearText) {
+        try {
+            WebElement workingElement = findElement(elementToClearText);
+            workingElement.clear();
+            printOutInfo.append("Cleared text in element [").append(elementToClearText.toString()).append("]");
+        } catch (StaleElementReferenceException staleElementReferenceException) {
+            clearText(elementToClearText);
+        } catch (Exception e) {
+            printOutInfo.append("Cannot clear text of element [").append(elementToClearText.toString()).append("]");
+            throw e;
+        }
+        System.out.println(printOutInfo);
+    }
+
     public String getText(String elementToGetText) {
         try {
             WebElement workingElement = findElement(elementToGetText);
@@ -101,5 +118,64 @@ public class ActionManager {
             System.out.println(printOutInfo);
             throw e;
         }
+    }
+
+    public void openUrl(String urlToBeOpen) {
+        try {
+            driver.get(urlToBeOpen);
+            printOutInfo.append("Browser opened page with url [").append(urlToBeOpen).append("] successfully!");
+            System.out.println(printOutInfo);
+        } catch (Exception e) {
+            printOutInfo.append("Browser cannot opened page with url [").append(urlToBeOpen).append("]");
+            System.out.println(printOutInfo);
+            throw e;
+        }
+    }
+
+    public void waitForElementVisible(String elementToBeWait) {
+        wait.until(ExpectedConditions.visibilityOf(findElement(elementToBeWait)));
+    }
+
+    public void waitForElementClickable(String elementToBeWait) {
+        wait.until(ExpectedConditions.elementToBeClickable(findElement(elementToBeWait)));
+    }
+
+    public void mouseMoveToElementAndClick(String elementMovingToAndClick) {
+        try {
+            Actions actions = new Actions(driver);
+            actions.moveToElement(findElement(elementMovingToAndClick));
+            actions.click().build().perform();
+            printOutInfo.append("Moved and clicked on element [").append(elementMovingToAndClick).append("]");
+            System.out.println(printOutInfo);
+        } catch (StaleElementReferenceException staleElementReferenceException) {
+            mouseMoveToElementAndClick(elementMovingToAndClick);
+            printOutInfo.append("Moved and clicked on element [").append(elementMovingToAndClick).append("]");
+            System.out.println(printOutInfo);
+        } catch (Exception e) {
+            printOutInfo.append("Cannot move and click on element [").append(elementMovingToAndClick).append("]");
+            System.out.println(printOutInfo);
+            throw e;
+        }
+    }
+
+    public void selectDropDownFieldWithValue(String elementDropDownField, String fieldValue) {
+        try {
+            Select workingDropDownField = new Select(findElement(elementDropDownField));
+            workingDropDownField.selectByValue(fieldValue);
+            printOutInfo.append("Opened drop down field [").append(elementDropDownField).append("] and select value [").append(fieldValue).append("]");
+            System.out.println(printOutInfo);
+        } catch (StaleElementReferenceException staleElementReferenceException) {
+            selectDropDownFieldWithValue(elementDropDownField, fieldValue);
+            printOutInfo.append("Opened drop down field [").append(elementDropDownField).append("] and select value [").append(fieldValue).append("]");
+            System.out.println(printOutInfo);
+        } catch (Exception e) {
+            printOutInfo.append("Can not opene drop down field [").append(elementDropDownField).append("] and select value [").append(fieldValue).append("]");
+            System.out.println(printOutInfo);
+            throw e;
+        }
+    }
+
+    public Select getDropDownOptionsList(String elementDropDownField) {
+        return new Select(findElement(elementDropDownField));
     }
 }
