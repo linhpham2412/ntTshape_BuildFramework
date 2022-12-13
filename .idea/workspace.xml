@@ -5,13 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0209ad07-ab16-4892-92f8-538836da1e27" name="Changes" comment="create ActionManager">
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nt/tshape/automation/selenium/WebDriverManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nt/tshape/automation/selenium/WebDriverManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nt/tshape/automation/setup/WebDriverTestNGSetup.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nt/tshape/automation/setup/WebDriverTestNGSetup.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nt/tshape/automation/selenium/ActionManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nt/tshape/automation/selenium/ActionManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nt/tshape/automation/setup/WebDriverTestNGSetup.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nt/tshape/automation/setup/WebDriverTestNGSetupBase.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/nt/tshape/automation/selenium/PageModal/AutomationPracticeAccountPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/nt/tshape/automation/selenium/PageModal/AutomationPracticeAccountPage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/nt/tshape/automation/selenium/PageModal/AutomationPracticeIndexPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/nt/tshape/automation/selenium/PageModal/AutomationPracticeIndexPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/nt/tshape/automation/selenium/TestCase/Exercise1RegisterNewAccountTestCases.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/nt/tshape/automation/selenium/TestCase/Exercise1RegisterNewAccountTestCases.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/nt/tshape/automation/selenium/TestCase/Exercise2SearchProductTestCases.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/nt/tshape/automation/selenium/TestCase/Exercise2SearchProductTestCases.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/nt/tshape/automation/selenium/TestCase/Exercise1RegisterNewAccountTestCases.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/nt/tshape/automation/selenium/TestCase/Exercise1RegisterNewAccountTestCasesBase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/nt/tshape/automation/selenium/TestCase/Exercise2SearchProductTestCases.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/nt/tshape/automation/selenium/TestCase/ExerciseBase2SearchProductTestCases.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,6 +65,7 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "dart.analysis.tool.window.visible": "false",
     "show.migrate.to.gradle.popup": "false"
   }
@@ -79,6 +82,44 @@
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="nt.tshape.automation.selenium" />
     </key>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="JetRunConfigurationType">
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <option name="filePath" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="C:/Users/linhpham/Documents/Git_Repository/ntTshape_BuildFramework/testng.xml" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="tshape_linhpham_1326_buildFrameWork" />
+      <shortenClasspath name="NONE" />
+      <useClassPathOnly />
+      <option name="SUITE_NAME" value="$PROJECT_DIR$/testng.xml" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="GROUP_NAME" value="" />
+      <option name="TEST_OBJECT" value="SUITE" />
+      <option name="VM_PARAMETERS" value="-ea -Dtestng.dtd.http=true" />
+      <option name="PARAMETERS" value="" />
+      <option name="OUTPUT_DIRECTORY" value="" />
+      <option name="PROPERTIES_FILE" value="" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="TestNG.C:/Users/linhpham/Documents/Git_Repository/ntTshape_BuildFramework/testng.xml" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
